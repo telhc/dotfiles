@@ -1,0 +1,172 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+alt + Return
+  alacritty
+
+# program launcher
+#alt + shift + d
+#	dmenu_run
+
+# make sxhkd reload its configuration files:
+alt + ctrl + r
+	pkill -USR1 -x sxhkd
+
+alt + ctrl + shift + x
+    alacritty -e $HOME/.config/.scripts/sxhkdhelp.sh
+alt + r
+    rofi -modi "emoji,run,window,clipboard:greenclip print" -show emoji -show-icons -sidebar-mode -emoji-file $HOME/.config/rofi/all_emojis.txt
+alt + y
+    $HOME/.config/.scripts/yt.sh -r
+
+alt + ctrl + shift + j
+	brave "https://jisho.org/"
+
+# alt + shift + w
+#   alacritty -o font.size=9 -e curl v2.wttr.in/Melbourne
+
+alt + shift + p
+  plover_send_command toggle
+alt + shift + s
+  alacritty -e ssh rpi@192.168.1.101
+alt + b
+  brave
+alt + c
+  alacritty -e khal interactive
+alt + shift + v
+	alacritty -e vim $HOME/.config/nvim/init.vim
+alt + shift + c
+  alacritty -e vim $HOME/.config/sxhkd/sxhkdrc
+alt + shift + b
+  alacritty -e vim $HOME/.config/bspwm/bspwmrc
+alt + ctrl + shift + p
+  alacritty -e vim $HOME/.config/polybar/config.ini
+alt + shift + e
+  caja
+alt + e
+  alacritty -e ranger
+  # alacritty -e zsh $HOME/.config/.scripts/ranger.sh
+
+XF86AudioRaiseVolume
+    $HOME/.config/.scripts/volup.sh
+XF86AudioLowerVolume
+    $HOME/.config/.scripts/voldown.sh
+XF86AudioMute
+    $HOME/.config/.scripts/volmute.sh
+
+shift + Print
+    screengrab
+
+# quit/restart bspwm
+alt + shift + r
+	bspc wm -r
+alt + shift + ctrl + Escape
+    bspc quit
+
+# close and kill
+# alt + {_,shift + }q
+#	bspc node -{c,k}
+alt + shift + q
+    bspc node -c
+
+alt + shift + ctrl q
+    bspc node -k
+# ctrlernate between the tiled and monocle layout
+alt + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+#alt + y
+#	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+# alt + g
+# 	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+alt + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+alt + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+alt + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+alt + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+alt + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+alt + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+alt + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+alt + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+    $HOME/.config/.scripts/chdt.sh {-f,-d} {1-9,10}
+#	bspc {desktop -f,node -d} '^{1-9,10}'
+
+alt + ctrl + {_,shift + }{1-9,0}
+	bspc {desktop -f, node -d} '^{11,12,13,14,15,16,17,18,19,20}'
+#
+# preselect
+#
+
+# preselect the direction
+super + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+alt + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+alt + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+alt + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+alt + ctrl + {_,shift + }{h,j,k,l}
+  $HOME/.config/.scripts/resize.sh {20,200} {west,south,north,east}
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+#alt + ctrl + shift + {h,j,k,l}
+# bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

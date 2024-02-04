@@ -1,0 +1,16 @@
+(defwindow events
+           :monitor 0
+           :geometry (geometry :x "1%"
+                               :y "5%"
+                               :width "12%"
+                               :height "20%"
+                               :anchor "top left")
+           :stacking "bg"
+           :wm-ignore true
+  (box :class "calendar"
+    (label :text calendar)
+  )
+)
+
+(defpoll calendar :interval "60s"
+  "khal list now 30d -f '{title}{nl}'")
