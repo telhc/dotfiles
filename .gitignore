@@ -1,5 +1,6 @@
 */
 .*
+!screenshots/
 !.config/
 !.config/.scripts/
 .config/.scripts/startapps.sh
