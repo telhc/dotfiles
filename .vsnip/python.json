@@ -1,0 +1,69 @@
+{
+  "pythonVisuals": {
+    "prefix": ["import pandas"],
+    "body": [
+      "import pandas as pd",
+      "import seaborn as sns",
+      "import email.utils.parsedate_to_datetime as parse_datetime",
+      "from matplotlib import pyplot as plt",
+      "from datetime import datetime as dt, date",
+      "plt.style.use(\"Solarize_Light2\")"
+    ],
+    "description": "Python analysis imports."
+  },
+  "pythonDateBreakdowns": {
+    "prefix": ["date breakdown"],
+    "body": [
+      "df['year'] = df['date'].dt.year",
+      "df['month'] = df['date'].dt.month",
+      "df['week'] = df['date'].dt.day_of_year // 7",
+      "df['dow'] = df['date'].dt.day_name().str.slice(0,3)"
+    ],
+    "description": "pandas date breakdown"
+  },
+  "pythonCV": {
+    "prefix": ["from PIL", "import cv2"],
+    "body": [
+      "from PIL import Image",
+      "import cv2",
+      "import numpy as np"
+    ],
+    "description": "CV imports"
+  },
+  "pythonTransformersTrainer": {
+    "prefix": ["trainer"],
+    "body": [
+      "from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments, DataCollatorForLanguageModeling",
+      "data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)",
+      "training_args = Seq2SeqTrainingArguments(",
+      "        predict_with_generate=True,",
+      "        evaluation_strategy='steps',",
+      "        save_strategy='steps',",
+      "        per_device_train_batch_size=8,",
+      "        per_device_eval_batch_size=8,",
+      "        # gradient_accumulation_steps=4,",
+      "        # gradient_checkpointing=True,",
+      "        fp16=True,",
+      "        dataloader_num_workers=4,",
+      "        output_dir=\"tmp_trainer\",",
+      "        logging_steps=10,",
+      "        save_steps=20000,",
+      "        eval_steps=500,",
+      "        num_train_epochs=10,",
+      "        run_name=\"test\"",
+      "    )",
+      "trainer = Seq2SeqTrainer(",
+      "        model=model,",
+      "        tokenizer=tokenizer,",
+      "        args=training_args,",
+      "        train_dataset=dataset_train,",
+      "        eval_dataset=dataset_test,",
+      "        data_collator=data_collator",
+      "    )",
+      "import os",
+      "os.environ[\"TOKENIZERS_PARALLELISM\"] = \"false\"",
+      "trainer.train()"
+    ],
+    "description": "Seq2SeqTrainer"
+  }
+}
