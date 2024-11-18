@@ -1,6 +1,8 @@
 */
 .*
+!README.md
 !screenshots/
+!.vsnip/
 !.config/
 !.config/.scripts/
 .config/.scripts/startapps.sh
