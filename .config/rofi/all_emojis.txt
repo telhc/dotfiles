@@ -2,6 +2,7 @@
 😘	Smileys & Emotion	face-affection	face blowing a kiss	face | face blowing a kiss | kiss
 🤔	Smileys & Emotion	face-hand	thinking face	face | thinking
 🤣	Smileys & Emotion	face-smiling	rolling on the floor laughing	face | floor | laugh | rofl | rolling | rolling on the floor laughing | rotfl
+😊	Smileys & Emotion	face-smiling	smiling face with smiling eyes	blush | eye | face | smile | smiling face with smiling eyes
 😍	Smileys & Emotion	face-affection	smiling face with heart-eyes	eye | face | love | smile | smiling face with heart-eyes | smiling face with heart eyes
 🥰	Smileys & Emotion	face-affection	smiling face with hearts	adore | crush | hearts | in love | smiling face with hearts
 🤗	Smileys & Emotion	face-hand	smiling face with open hands	face | hug | hugging | open hands | smiling face | smiling face with open hands
@@ -12,9 +13,11 @@
 💾	Objects	computer	floppy disk	computer | disk | floppy | diskette
 🥳	Smileys & Emotion	face-hat	partying face	celebration | hat | horn | party | partying face
 😋	Smileys & Emotion	face-tongue	face savoring food	delicious | face | face savoring food | savouring | smile | yum | face savouring food | savoring
+📅	Objects	office	calendar	calendar | date | meeting
 💼	Objects	office	briefcase	briefcase | work
 🧪	Objects	science	test tube	chemist | chemistry | experiment | lab | science | test tube | research
 👍	People & Body	hand-fingers-closed	thumbs up	+1 | hand | thumb | thumbs up | up
+🏋️	People & Body	person-sport	gym | person lifting weights	
 🔥	Travel & Places	sky & weather	fire	fire | flame | tool
 💰	Objects	money	money bag	bag | dollar | money | moneybag
 🐞	Animals & Nature	animal-bug	lady beetle	beetle | insect | lady beetle | ladybird | ladybug
@@ -50,7 +53,6 @@
 🙃	Smileys & Emotion	face-smiling	upside-down face	face | upside-down | upside down | upside-down face
 🫠	Smileys & Emotion	face-smiling	melting face	disappear | dissolve | liquid | melt | melting face
 😉	Smileys & Emotion	face-smiling	winking face	face | wink | winking face
-😊	Smileys & Emotion	face-smiling	smiling face with smiling eyes	blush | eye | face | smile | smiling face with smiling eyes
 😇	Smileys & Emotion	face-smiling	smiling face with halo	angel | face | fantasy | halo | innocent | smiling face with halo
 🤩	Smileys & Emotion	face-affection	star-struck	eyes | face | grinning | star | star-struck
 😗	Smileys & Emotion	face-affection	kissing face	face | kiss | kissing face
@@ -2404,7 +2406,6 @@
 ⛹🏾‍♀	People & Body	person-sport	woman bouncing ball: medium-dark skin tone	ball | medium-dark skin tone | woman | woman bouncing ball
 ⛹🏿‍♀️	People & Body	person-sport	woman bouncing ball: dark skin tone	
 ⛹🏿‍♀	People & Body	person-sport	woman bouncing ball: dark skin tone	ball | dark skin tone | woman | woman bouncing ball
-🏋️	People & Body	person-sport	person lifting weights	
 🏋	People & Body	person-sport	person lifting weights	lifter | person lifting weights | weight | weightlifter
 🏋🏻	People & Body	person-sport	person lifting weights: light skin tone	lifter | light skin tone | person lifting weights | weight | weightlifter
 🏋🏼	People & Body	person-sport	person lifting weights: medium-light skin tone	lifter | medium-light skin tone | person lifting weights | weight | weightlifter
@@ -4042,7 +4043,6 @@
 📂	Objects	office	open file folder	file | folder | open
 🗂️	Objects	office	card index dividers	
 🗂	Objects	office	card index dividers	card | dividers | index
-📅	Objects	office	calendar	calendar | date | meeting
 📆	Objects	office	tear-off calendar	calendar | tear-off calendar
 🗒️	Objects	office	spiral notepad	
 🗒	Objects	office	spiral notepad	note | pad | spiral | spiral notepad
