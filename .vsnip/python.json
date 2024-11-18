@@ -30,6 +30,16 @@
     ],
     "description": "CV imports"
   },
+  "pythonArgparse": {
+    "prefix": ["argparse"],
+    "body": [
+      "from argparse import ArgumentParser",
+      "parser = ArgumentParser()",
+      "parser.add_argument(\"-f\", \"--file\", dest=\"input_file\", help=\"Input image/pdf file\", metavar=\"FILE\")",
+      "parser.add_argument(\"-v\", \"--verbose\", action=\"store_true\", dest=\"verbose\", default=False, help=\"Verbose\")",
+      "args = parser.parse_args()"
+    ]
+  },
   "pythonTransformersTrainer": {
     "prefix": ["trainer"],
     "body": [
