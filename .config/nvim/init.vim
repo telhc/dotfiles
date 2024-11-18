@@ -8,13 +8,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'yuttie/comfortable-motion.vim'
 " theme
 Plug 'dylanaraps/wal.vim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Utility
 "Plug 'preservim/nerdtree'
 Plug 'natecraddock/workspaces.nvim'
 Plug 'natecraddock/sessions.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'easymotion/vim-easymotion'
 Plug 'jalvesaq/colorout'
@@ -41,6 +42,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 "Plug 'ncm2/ncm2'
 "Plug 'roxma/nvim-yarp'
 "Plug 'ncm2/ncm2-bufword'
@@ -69,7 +71,56 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 0
 
 " theme
-"colorscheme wal
+lua <<EOF
+  require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
+    },
+    transparent_background = true, -- disables setting the background color.
+    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    dim_inactive = {
+        enabled = false, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    no_underline = false, -- Force no underline
+    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+        -- miscs = {}, -- Uncomment to turn off hard-coded styles
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
+        mini = {
+            enabled = true,
+            indentscope_color = "",
+        },
+        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    },
+  })
+vim.cmd.colorscheme "catppuccin"
+EOF
 
 " LSP
 :luado require("lspconfig").pyright.setup{}
@@ -136,7 +187,7 @@ lua <<EOF
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -184,6 +235,9 @@ lua <<EOF
   }
 EOF
 
+" Vsnip mappings
+noremap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
 
 " Bindings Mappings
 " basic
@@ -197,7 +251,7 @@ nnoremap <C-X> :bd<CR>
 " reload
 nnoremap <Leader><Leader>rl :source ~/.config/nvim/init.vim<CR>
 " EasyMotion
-map <S-j> <Plug>(easymotion-prefix)
+map <S-j> <Plug>(easymotion-bd-f)
 " Telescope
 map t :Telescope<CR>
 map <C-O> :Telescope find_files<CR>
